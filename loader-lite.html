@@ -1,0 +1,60 @@
+<link rel="import" href="../polymer/polymer-element.html">
+
+<dom-module id="loader-lite">
+  <template>
+    <style>
+      :host {
+        display: none;
+        text-align: center;
+        color: var(--loader-color, inherit);
+      }
+      :host([loading]) {
+        display: block;
+      }
+      /* https://github.com/Polymer/hn-polymer-2/blob/master/index.html#L83 */
+      :host([loading]) div{
+        animation: pulse var(--loader-speed, 1s) infinite ease-in-out;
+        will-change: opacity, transform;
+        display: inline-block;
+        padding: 30px;
+      }
+      @keyframes pulse {
+        0% { transform: scale(1); opacity: 0; }
+        50% { transform: scale(var(--loader-scale, 1.2)); opacity: 1; }
+      }
+    </style>
+
+    <div>• • •</div>
+
+  </template>
+  <script>
+    /**
+     * `loader-lite`
+     *  Polymer 2 animated loader element
+
+     ### Styling
+     Custom property | Description | Default
+     ----------------|-------------|----------
+     `--loader-color` | Loader color | `inherit`
+     `--loader-speed` | Animation speed | `1s`
+     `--loader-scale` | Animation transform value | `1.2`
+
+     * @customElement
+     * @polymer
+     * @demo demo/index.html
+     */
+    class LoaderLite extends Polymer.Element {
+      static get is() { return 'loader-lite'; }
+      static get properties() {
+        return {
+          loading: {
+            type: Boolean,
+            value: false,
+            reflectToAttribute: true
+          }
+        };
+      }
+    }
+    window.customElements.define(LoaderLite.is, LoaderLite);
+  </script>
+</dom-module>
