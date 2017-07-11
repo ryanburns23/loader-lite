@@ -23,7 +23,7 @@ Polymer 2 animated loader element
   loader-lite{
     color: #2196F3;
     /* defaults */
-    --loader-scale: 1;
+    --loader-scale: 1.2;
     --loader-speed: 1s;
   }
 </style>
